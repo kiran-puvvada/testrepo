@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ThreatPulse</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232a78d6'/><path d='M4 17h6l3-7 5 13 3-6h7' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-logo">⚡</div>
+      <div><div class="brand-name">ThreatPulse</div><div class="brand-sub">Threat Intelligence Hub</div></div>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#/overview" data-r="overview"><span class="ico">◧</span>Overview</a>
+      <a href="#/feed" data-r="feed"><span class="ico">📰</span>Live Feed</a>
+      <a href="#/reports" data-r="reports"><span class="ico">📑</span>Threat Reports</a>
+      <a href="#/vulns" data-r="vulns"><span class="ico">🐞</span>Vulnerabilities</a>
+      <a href="#/iocs" data-r="iocs"><span class="ico">🧬</span>IOCs</a>
+      <a href="#/patterns" data-r="patterns"><span class="ico">🎯</span>Attack Patterns</a>
+      <div class="nav-sep">Hunt</div>
+      <a href="#/hunt" data-r="hunt"><span class="ico">🔎</span>Query Builder</a>
+      <div class="nav-sep">Manage</div>
+      <a href="#/sources" data-r="sources"><span class="ico">📡</span>Sources</a>
+      <a href="#/toolkit" data-r="toolkit"><span class="ico">🧰</span>Toolkit</a>
+    </nav>
+    <div class="sidebar-foot" id="sidebar-foot">Auto-refresh every 15 min</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-row">
+        <button class="btn ghost menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+        <label class="search"><input id="q" type="search" placeholder="Search CVE, IOC, actor, malware, keyword…" autocomplete="off"></label>
+        <span class="live" id="live"><span class="live-dot" id="live-dot"></span><span id="live-text">Live</span></span>
+        <button class="btn" id="refresh-btn" title="Pull all sources now">⟳ Refresh</button>
+        <button class="btn ghost" id="theme-btn" title="Toggle light / dark theme" aria-label="Toggle theme">🌓</button>
+      </div>
+      <div class="filters" id="filters">
+        <span class="ctl-label">Time</span>
+        <select class="ctl" id="f-period">
+          <option value="1d">Last 24 hours</option>
+          <option value="7d">Last 7 days</option>
+          <option value="30d">Last 30 days</option>
+          <option value="90d" selected>Last 90 days</option>
+          <option value="365d">Last 12 months</option>
+          <option value="all">All time (history)</option>
+          <option value="year">Specific year…</option>
+          <option value="month">Specific month…</option>
+          <option value="day">Specific day…</option>
+          <option value="custom">Custom range…</option>
+        </select>
+        <select class="ctl" id="f-year" hidden></select>
+        <input class="ctl" type="month" id="f-month" hidden>
+        <input class="ctl" type="date" id="f-day" hidden>
+        <input class="ctl" type="date" id="f-from" hidden>
+        <input class="ctl" type="date" id="f-to" hidden>
+        <span class="ctl-label">Industry</span>
+        <select class="ctl" id="f-industry"><option value="">All industries</option></select>
+        <span class="ctl-label">Region</span>
+        <select class="ctl" id="f-region"><option value="">All regions</option></select>
+        <span class="ctl-label">Attack</span>
+        <select class="ctl" id="f-attack"><option value="">All attack types</option></select>
+        <button class="chip-clear" id="f-clear">Reset filters</button>
+      </div>
+    </header>
+    <main class="content" id="view"></main>
+  </div>
+</div>
+<div id="tooltip"></div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
