@@ -4,6 +4,17 @@ A self-hosted threat intel dashboard. It pulls **news, vulnerabilities (CVEs) an
 
 Pure Python standard library + vanilla JS. No dependencies, no build step.
 
+## Quick start (no git needed)
+
+1. **Install Python 3** from https://www.python.org/downloads/. On Windows, tick **"Add Python to PATH"** on the first installer screen.
+2. **Download this project:** on GitHub click the green **Code** button, then **Download ZIP**, then unzip it.
+3. **Double-click the launcher:**
+   * Windows: `start-windows.bat`. If SmartScreen appears, click *More info*, then *Run anyway*.
+   * macOS: `start-mac.command`. The first time, right-click it, choose *Open*, then confirm *Open*.
+4. Your browser opens **http://127.0.0.1:8080** automatically. Keep the black terminal window open while you use the dashboard, and close it to stop.
+
+Command line equivalents:
+
 ```bash
 python3 run.py                    # http://127.0.0.1:8080  (collects every 15 min)
 python3 run.py --demo             # also load clearly-labelled [DEMO] sample data

@@ -19,6 +19,7 @@ def main():
     ap.add_argument("--collect-once", action="store_true", help="run one collection cycle and exit")
     ap.add_argument("--no-collect", action="store_true", help="do not run background collectors")
     ap.add_argument("--demo", action="store_true", help="load sample DEMO data for an offline preview")
+    ap.add_argument("--open", action="store_true", help="open the dashboard in the default web browser")
     ap.add_argument("-v", "--verbose", action="store_true")
     a = ap.parse_args()
     logging.basicConfig(level=logging.DEBUG if a.verbose else logging.INFO,
@@ -32,6 +33,12 @@ def main():
         return
     if not a.no_collect:
         scheduler.start()
+    if a.open:
+        import threading
+        import webbrowser
+        host = "127.0.0.1" if a.host in ("0.0.0.0", "") else a.host
+        threading.Timer(1.5, webbrowser.open, (f"http://{host}:{a.port}",)).start()
+    print(f"\n  ThreatPulse is running:  http://127.0.0.1:{a.port}\n  Keep this window open. Press Ctrl+C to stop.\n", flush=True)
     server.serve(a.host, a.port)
 
 
