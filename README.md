@@ -13,6 +13,8 @@ Pure Python standard library + vanilla JS. No dependencies, no build step.
    * macOS: `start-mac.command`. The first time, right-click it, choose *Open*, then confirm *Open*.
 4. Your browser opens **http://127.0.0.1:8080** automatically. Keep the black terminal window open while you use the dashboard, and close it to stop.
 
+**In VS Code:** open the folder (*File > Open Folder*), install the recommended **Python** extension when prompted, then open the *Run and Debug* view (Ctrl+Shift+D), pick **▶ Run ThreatPulse dashboard** and press **F5**.
+
 Command line equivalents:
 
 ```bash
